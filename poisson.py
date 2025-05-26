@@ -1,14 +1,10 @@
 # Must use WSL for this code to function
 
-# Import leS data
-from read_leS import read_leS
-from read_dat import read_dat
+'''
+Normally, this data is imported. However, for this repo, I have simply used an example data vector that illustrates what a general vectorized .leS or .dat file extraction might look like.
+'''
 
-file_choice = input(".leS or .dat (L or D): ")
-if file_choice == 'L':
-    data = read_leS()
-elif file_choice == 'D':
-    data = read_dat()
+data = [1] * 216
 
 # Library imports
 import importlib.util
@@ -33,7 +29,7 @@ from dolfinx.fem.petsc import LinearProblem
 from ufl import ds, dx, grad, inner
 
 # Create a 3D cubic mesh with tetrahedra cells
-cell_dim = int(len(data[:,3]) ** (1/3)) + 1
+cell_dim = int(len(data) ** (1/3)) + 1
 n_x, n_y, n_z = (cell_dim - 1), (cell_dim - 1), (cell_dim - 1)  # Number of cells in each direction
 
 msh = mesh.create_unit_cube(
